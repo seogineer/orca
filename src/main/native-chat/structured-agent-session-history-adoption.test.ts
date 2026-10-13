@@ -221,7 +221,8 @@ describe('resolveStructuredAgentSessionAdoption', () => {
           settings: {},
           selectedAccountHome: { variable: 'CLAUDE_CONFIG_DIR', path: '/home/dev/.claude' }
         }),
-        resolveTranscript: transcriptImport.findTranscript
+        resolveTranscript: (args) =>
+          transcriptImport.findTranscript({ ...args, launchEnvironment: {} })
       })
     ).rejects.toThrow('agent_session_identity_required')
     expect(findTranscript.mock.calls.map(([args]) => args.accountHomePath)).toEqual([

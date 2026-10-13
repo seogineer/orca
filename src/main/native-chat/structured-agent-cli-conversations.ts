@@ -26,6 +26,8 @@ export type StructuredAgentTranscriptImport = {
   findTranscript: (input: {
     providerSessionId: string
     accountHome: AgentSessionAccountHome
+    /** The execution host's effective agent environment before account binding. */
+    launchEnvironment: NodeJS.ProcessEnv
   }) => Promise<string | null>
 }
 
